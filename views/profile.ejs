@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>oAuth Authentication with google</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      nav {
+        background: #fff;
+        box-shadow: 2px 2px 2px #dfdfdf;
+        width: 100%;
+      }
+      nav ul {
+        align-items: center;
+        display: flex;
+        width: 80%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0;
+      }
+      nav li {
+        list-style-type: none;
+        display: inline-block;
+        margin: 0 10px 0 0;
+      }
+      nav a {
+        color: dodgerblue;
+        font-size: 18px;
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+      }
+      .logo {
+        margin-right: auto;
+      }
+      .content {
+        width: 80%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li class="logo"><a href="/">Logo</a></li>
+        <li><a href="/">Homepage</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <% if(user) { %>
+        <li><a href="/auth/logout">Logout</a></li>
+        <% } else { %>
+        <li><a href="/auth/login">Login</a></li>
+        <% } %>
+      </ul>
+    </nav>
+    <main>
+      <div class="content">
+        <header>
+          <% if (user) { %>
+          <h1>Welcome to your profile <%= user.username %></h1>
+          <% } %>
+        </header>
+        <p>Your profile info goes here...</p>
+        <img src="<%= user.image %>" alt="<%= user.username %>" />
+      </div>
+    </main>
+  </body>
+</html>
